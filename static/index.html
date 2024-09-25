@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            /* background-color: gainsboro; */
+        }
+        .container{
+            width: 600px;
+            margin: auto;
+            background-color: gainsboro;
+            border: 1px solid gray;
+            padding: 2%;
+            border-radius: 1%;
+        }
+        h1{
+            text-align: center;
+        }
+        #inputText {
+            width: 100%;
+            max-width: 400px;
+            padding: 1%;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 1% 2%;
+            font-size: 16px;
+        }
+        #loading {
+            display: none;
+            font-size: 14px;
+            color: blue;
+        }
+        #error {
+            color: red;
+        }
+    </style>
+    
+</head>
+<body>
+   <div class="container">
+    <h1>Text Generator</h1>
+    <p>Enter a prompt below and click "Generate Text" to get results.</p>
+    
+    <input type="text" id="inputText" placeholder="Enter prompt here">
+    <button onclick="generate()">Generate Text</button>
+
+    <p id="loading">Generating text, please wait...</p>
+    <p id="error"></p>
+
+    <h2>Generated Text:</h2>
+    <p id="generatedText">Enter a prompt to generate text.</p>
+   </div>
+
+   <script>
+    async function generate() {
+        const inputText = document.getElementById('inputText').value;
+        const generatedTextEl = document.getElementById('generatedText');
+        const loadingEl = document.getElementById('loading');
+        const errorEl = document.getElementById('error');
+        
+        // Reset previous messages
+        generatedTextEl.innerText = "";
+        errorEl.innerText = "";
+
+        // Show loading message
+        loadingEl.style.display = 'block';
+
+        try {
+            const response = await fetch('/generate/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ prompt: inputText }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to generate text. Please try again.');
+            }
+
+            const data = await response.json();
+            generatedTextEl.innerText = data.generated_text || "No text generated.";
+        } catch (error) {
+            errorEl.innerText = error.message;
+        } finally {
+            // Hide loading message
+            loadingEl.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>

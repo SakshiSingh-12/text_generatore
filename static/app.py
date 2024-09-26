@@ -27,6 +27,20 @@ class GenerateRequest(BaseModel):
 class TextResponse(BaseModel):
     generated_text: str
 
+@app.post("/generate/", response_model=TextResponse)
+async def generate_text(request: GenerateRequest):
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",  # You can change to a different GPT-3 model if needed
+            messages=[
+                {"role": "user", "content": request.prompt}
+            ]
+        )
+        generated_text = response.choices[0].message['content']
+        return TextResponse(generated_text=generated_text)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 
 

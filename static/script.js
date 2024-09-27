@@ -2,7 +2,7 @@
         const inputText = document.getElementById('inputText').value;
         const generatedTextEl = document.getElementById('generatedText');
         const loadingEl = document.getElementById('loading');
-        const errorEl = document.getElementById('error');
+        
         
        
         

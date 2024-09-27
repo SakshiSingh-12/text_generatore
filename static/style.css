@@ -4,33 +4,4 @@
             margin: 20px;
             /* background-color: gainsboro; */
         }
-        .container{
-            width: 600px;
-            margin: auto;
-            background-color: gainsboro;
-            border: 1px solid gray;
-            padding: 2%;
-            border-radius: 1%;
-        }
-        h1{
-            text-align: center;
-        }
-        #inputText {
-            width: 100%;
-            max-width: 400px;
-            padding: 1%;
-            margin-bottom: 10px;
-        }
-        button {
-            padding: 1% 2%;
-            font-size: 16px;
-        }
-        #loading {
-            display: none;
-            font-size: 14px;
-            color: blue;
-        }
-        #error {
-            color: red;
-        }
-  
+       

@@ -5,3 +5,11 @@
             /* background-color: gainsboro; */
         }
        
+ .container{
+            width: 600px;
+            margin: auto;
+            background-color: gainsboro;
+            border: 1px solid gray;
+            padding: 2%;
+            border-radius: 1%;
+        }

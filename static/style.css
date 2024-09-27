@@ -17,4 +17,10 @@
         h1{
             text-align: center;
         }
-       
+        #inputText {
+            width: 100%;
+            max-width: 400px;
+            padding: 1%;
+            margin-bottom: 10px;
+        }
+        

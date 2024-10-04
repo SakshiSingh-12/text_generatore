@@ -26,3 +26,8 @@ app.mount("/", StaticFiles(directory="static", html=True), name="static")
 class GenerateRequest(BaseModel):
     prompt: str
 
+
+# Define a Pydantic model for the response
+class TextResponse(BaseModel):
+    generated_text: str
+

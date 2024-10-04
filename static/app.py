@@ -11,5 +11,11 @@ from pydantic import BaseModel
 
 
 
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+# Initialize FastAPI app
+app = FastAPI()
+
+
 
 

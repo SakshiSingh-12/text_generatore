@@ -43,3 +43,8 @@ async def generate_text(request: GenerateRequest):
         )
 
 
+        generated_text = response.choices[0].message['content']
+        return TextResponse(generated_text=generated_text)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+

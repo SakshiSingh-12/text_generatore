@@ -22,3 +22,7 @@ openai.api_key = 'sk-proj-SRa2xnPN0s7z79bf_XTQq9mMGIhS5PK36yB82WThTOfgg9fOlPgSEk
 # Mount the static directory
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
 
+# Define a Pydantic model for the request body
+class GenerateRequest(BaseModel):
+    prompt: str
+
